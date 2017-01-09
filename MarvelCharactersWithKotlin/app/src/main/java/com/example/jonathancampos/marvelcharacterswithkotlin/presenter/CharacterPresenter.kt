@@ -24,10 +24,7 @@ class CharacterPresenter(view : ViewBase) {
 
         val service : CharacterService = retrofit.create(CharacterService::class.java)
 
-        val timestamp : Long = SystemClock.currentThreadTimeMillis()
-
-        val call : Call<Characters> = service.getCharacterList(timestamp,
-                "apikey", "hash")
+        val call : Call<Characters> = service.getCharacterList()
 
         call.enqueue(object : Callback<Characters> {
             override fun onResponse(call: Call<Characters>?, response: Response<Characters>?) {
@@ -43,6 +40,5 @@ class CharacterPresenter(view : ViewBase) {
                 throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
-
     }
 }
